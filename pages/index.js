@@ -1,10 +1,11 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import UserTable from '../component/table/UsersTable'
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
@@ -14,12 +15,26 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <UserTable/>
+        <h1>Welcome</h1>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onClick={() => router.push('/example')}
+        >
+          Go To Example
+        </button>
+        <p>*Client Side Example</p>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onClick={() => router.push('/serverside')}
+        >
+          Go To Example
+        </button>
+        <p>*Server Side Pagination Example</p>
       </main>
 
-      <footer className={styles.footer}>
-        Sr. Frontend Ajaib Test
-      </footer>
+      <footer className={styles.footer}>Sr. Frontend Ajaib Test</footer>
     </div>
-  )
+  );
 }
