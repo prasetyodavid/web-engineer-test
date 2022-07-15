@@ -17,7 +17,7 @@ export default function Home() {
         <h1>Welcome</h1>
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           onClick={() => router.push('/example')}
         >
           Go To Example
@@ -25,7 +25,7 @@ export default function Home() {
         <p>*Client Side Example</p>
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           onClick={() => router.push('/serverside')}
         >
           Go To Example

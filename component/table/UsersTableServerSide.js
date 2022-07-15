@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import DataTable from 'react-data-table-component';
 import * as UsersApi from '../../lib/apis/users-api.js';
 import * as UsersModel from '../../lib/models/users-model.js';
-
-import InputGroup from 'react-bootstrap/InputGroup';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import FilterComponent from '../../component/filter/FilterComponent';
 
 const UsersTableServerSide = () => {
   const [users, setUsers] = useState([]);
@@ -20,8 +15,12 @@ const UsersTableServerSide = () => {
   });
   const [loading, setLoading] = useState(false);
   const [totalRows, setTotalRows] = useState(0);
-  const [newid, setNewId] = useState([]);
+  const [filterText, setFilterText] = useState('');
+  const [reset, setReset] = useState(false);
+  const [filterGender, setFilterGender] = useState('all');
   const columns = UsersModel.columns;
+  const [resetPaginationToggle, setResetPaginationToggle] =
+    React.useState(false);
 
   const fetchUsers = async (page) => {
     console.log(page);
@@ -41,7 +40,7 @@ const UsersTableServerSide = () => {
 
   const searchUser = async () => {
     setLoading(true);
-    filter.keyword = newid;
+    filter.keyword = filterText;
     const response = await UsersApi.get(filter);
     setUsers(response);
     setTotalRows(filter.limit);
@@ -68,6 +67,13 @@ const UsersTableServerSide = () => {
     setLoading(false);
   };
 
+  const setResetFilter = () => {
+    setFilterText('');
+    setFilterGender('all');
+    setReset(true);
+    fetchUsers();
+  };
+
   const subHeaderComponent = useMemo(() => {
     const handleClear = () => {
       setResetPaginationToggle(!resetPaginationToggle);
@@ -78,7 +84,7 @@ const UsersTableServerSide = () => {
       <FilterComponent
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
-        selectGender={(e) => setFilterGender(e.target.value)}
+        selectGender={selectGender}
         searchUser={searchUser}
         filterText={filterText}
       />
@@ -87,22 +93,22 @@ const UsersTableServerSide = () => {
 
   return (
     <DataTable
-          title="Users"
-          columns={columns}
-          data={users}
-          progressPending={loading}
-          pagination
-          fixedHeader
-          sortServer
-          paginationServer
-          paginationTotalRows={totalRows}
-          onChangeRowsPerPage={handlePerRowsChange}
-          onChangePage={handlePageChange}
-          defaultSortFieldId="name"
-          persistTableHead
-          subHeader
-          subHeaderComponent={subHeaderComponent}
-        />
+      title="Users"
+      columns={columns}
+      data={users}
+      progressPending={loading}
+      pagination
+      fixedHeader
+      sortServer
+      paginationServer
+      paginationTotalRows={totalRows}
+      onChangeRowsPerPage={handlePerRowsChange}
+      onChangePage={handlePageChange}
+      defaultSortFieldId="name"
+      persistTableHead
+      subHeader
+      subHeaderComponent={subHeaderComponent}
+    />
   );
 };
 

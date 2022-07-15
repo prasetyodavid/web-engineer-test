@@ -24,9 +24,6 @@ const UsersTableClientSide = () => {
     React.useState(false);
   const columns = UsersModel.columns;
 
-  console.log(filterGender);
-  console.log(filterText);
-
   const fetchUsers = async (page) => {
     setLoading(true);
     const response = await UsersApi.getall(filter);
@@ -36,9 +33,7 @@ const UsersTableClientSide = () => {
   };
 
   const searchUser = () => {
-    console.log(filterText);
-    console.log(filterGender);
-    if (filterText.length > 2 && filterGender == 'all') {
+    if (filterText.length > 1 && filterGender == 'all') {
       setFilteredItems(
         users.filter(
           (item) =>
@@ -47,21 +42,18 @@ const UsersTableClientSide = () => {
             (item.login.username &&
               item.login.username
                 .toLowerCase()
+                .includes(filterText.toLowerCase())) ||
+            (item.name.first &&
+              (item.name.first + ' ' + item.name.last)
+                .toLowerCase()
                 .includes(filterText.toLowerCase()))
         )
       );
-    } else if (
-      filterText.length == 0 &&
-      (filterGender == 'male' || filterGender == 'female')
-    ) {
+    } else if (filterText.length == 0 && filterGender !== 'all') {
       setFilteredItems(
         users.filter((item) => item.gender && item.gender === filterGender)
       );
-    } else if (
-      (filterText.length > 2 && filterGender == 'male') ||
-      filterGender == 'female'
-    ) {
-      console.log(filterGender);
+    } else if (filterText.length > 1 && filterGender !== 'all') {
       setFilteredItems(
         users.filter(
           (item) =>
@@ -87,6 +79,8 @@ const UsersTableClientSide = () => {
   const setResetFilter = () => {
     setFilterText('');
     setFilterGender('all');
+    setReset(true);
+    setFilteredItems(users);
   };
 
   const selectGender = async (e) => {
@@ -119,7 +113,7 @@ const UsersTableClientSide = () => {
         valueGender={filterGender}
       />
     );
-  }, [filterText, resetPaginationToggle, selectGender]);
+  }, [filterText, filterGender, resetPaginationToggle]);
 
   return (
     <DataTable
