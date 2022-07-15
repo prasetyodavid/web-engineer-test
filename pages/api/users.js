@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       params: {
         seed: 'foobar',
         inc: 'login,name,email,gender,registered',
-        results: 1000,
+        results: 100,
         nat: 'gb',
       },
     });

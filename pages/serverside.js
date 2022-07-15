@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import UsersTableServerSide from '../component/table/UsersTableServerSide';
 
-export default function Example() {
+export default function Serverside() {
   return (
     <div className={styles.container}>
       <Head>

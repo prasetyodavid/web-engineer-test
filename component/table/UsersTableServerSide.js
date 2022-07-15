@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
-const UsersTable = () => {
+const UsersTableServerSide = () => {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState({
     page: 1,
@@ -126,4 +126,4 @@ const UsersTable = () => {
   );
 };
 
-export default UsersTable;
+export default UsersTableServerSide;
