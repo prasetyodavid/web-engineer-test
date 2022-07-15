@@ -9,6 +9,7 @@ const UsersTableClientSide = () => {
   const [loading, setLoading] = useState(false);
   const [filterText, setFilterText] = useState('');
   const [filteredItems, setFilteredItems] = useState('');
+  const [reset, setReset] = useState(false);
   const [filterGender, setFilterGender] = useState('all');
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState({
@@ -18,6 +19,7 @@ const UsersTableClientSide = () => {
     gender: 'all',
     perPage: 10,
   });
+
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);
   const columns = UsersModel.columns;
@@ -27,7 +29,6 @@ const UsersTableClientSide = () => {
 
   const fetchUsers = async (page) => {
     setLoading(true);
-    filter.page = page;
     const response = await UsersApi.getall(filter);
     setUsers(response);
     setFilteredItems(response);
@@ -83,20 +84,15 @@ const UsersTableClientSide = () => {
     }
   };
 
-  const selectGenderbAK = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const { value } = e.target;
-    filter.gender = value;
-    const response = await UsersApi.getallbygender(filter);
-    setFilteredItems(response);
-    setLoading(false);
-  };
-
   const setResetFilter = () => {
-    fetchUsers();
     setFilterText('');
     setFilterGender('all');
+  };
+
+  const selectGender = async (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    setFilterGender(value);
   };
 
   useEffect(() => {
@@ -120,9 +116,10 @@ const UsersTableClientSide = () => {
         selectGender={(e) => setFilterGender(e.target.value)}
         searchUser={searchUser}
         filterText={filterText}
+        valueGender={filterGender}
       />
     );
-  }, [filterText, resetPaginationToggle]);
+  }, [filterText, resetPaginationToggle, selectGender]);
 
   return (
     <DataTable
