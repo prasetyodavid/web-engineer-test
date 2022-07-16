@@ -12,12 +12,13 @@ const FilterComponent = ({
   selectGender,
   onClear,
   valueGender,
+  handleSubmit
 }) => (
   <>
     <Container fluid className="searchbar">
       <Row>
         <Col md="8" xs="12">
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Row>
               <Col md="3" xs="12">
                 <InputGroup>

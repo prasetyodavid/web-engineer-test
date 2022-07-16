@@ -85,6 +85,11 @@ const UsersTableClientSide = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchUser();
+  };
+
   useEffect(() => {
     if (users.length == 0) {
       fetchUsers();
@@ -101,6 +106,7 @@ const UsersTableClientSide = () => {
 
     return (
       <FilterComponent
+        handleSubmit={handleSubmit}
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
         selectGender={(e) => setFilterGender(e.target.value)}
