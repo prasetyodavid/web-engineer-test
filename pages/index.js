@@ -37,6 +37,7 @@ export default function Home() {
         <h1 className="hero">
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://github.com/prasetyodavid/web-engineer-test"
           >
             Github
