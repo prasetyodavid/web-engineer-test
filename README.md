@@ -1,4 +1,4 @@
-This is a personal project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a personal project for Ajaib's Web Engineer Test .
 
 ## Getting Started
 
@@ -12,23 +12,57 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Next, unit testing with Jest:
+```bash
+npm run test
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Method and results
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+I try to implement 2 types of general pagination methods : Client side pagination and server side pagination, based on my experience using [JQuery Datatables](https://datatables.net/) or [Ext JS](https://www.sencha.com/products/extjs/).
 
-## Learn More
+## Directory Structure
+I personally try to take a simple approach, keep things separated basically in a class model/view style. We will be using three primary folders similar to mvc architecture
 
-To learn more about Next.js, take a look at the following resources:
+- component - The individual UI components that make up the app will live in here
+- lib - Models & API logic will live in here.
+- pages - Will be the actual routes/pages as per the required Next.js structure.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+component/
+├─ header/
+├─ filter/
+├─ table/
+├─ footer/
+lib/
+├─ apis/
+├─ models/
+pages/
+├─ api/
+├─ index.js
+public/
+styles/
+├─ globals.css
+tests/
+jest.config.js
+next.config.js
+package.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Frameworks & Libraries
 
-## Deploy on Vercel
+To learn more about Frameworks & Libraries used in this project, take a look at the following resources:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Next.js](https://nextjs.org/) - The React Framework for Production.
+- [React Data Table Component](https://www.npmjs.com/package/react-data-table-component) - A simple table component with awesome features.
+- [React Bootstrap](https://react-bootstrap.github.io) - The most popular front-end framework Rebuilt for React.
+- [Jest.io](https://jestjs.io/) - A delightful JavaScript Testing Framework with a focus on simplicity.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Demo on Vercel
+
+[Demo App](https://david-ajaib-test.vercel.app/) avalilable on Vercel
+
+Happy Coding! 😋🖥️
+
