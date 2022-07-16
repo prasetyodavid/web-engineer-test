@@ -43,7 +43,7 @@ const UsersTableServerSide = () => {
   };
 
   const searchUser = async () => {
-    alert("Server-Side Name Searching Not Yet Available.");
+    alert("Server-Side with Name searching not yet available.");
     setLoading(true);
     filter.keyword = filterText;
     const response = await UsersApi.get(filter);
@@ -79,6 +79,11 @@ const UsersTableServerSide = () => {
     fetchUsers();
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchUser();
+  };
+
   useEffect(() => {
     if (users.length == 0) {
       fetchUsers();
@@ -93,6 +98,7 @@ const UsersTableServerSide = () => {
 
     return (
       <FilterComponent
+        handleSubmit={handleSubmit}
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
         selectGender={selectGender}
