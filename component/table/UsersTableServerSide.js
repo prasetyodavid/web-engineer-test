@@ -78,6 +78,12 @@ const UsersTableServerSide = () => {
     fetchUsers();
   };
 
+  useEffect(() => {
+    if (users.length == 0) {
+      fetchUsers();
+    }
+  }, []);
+
   const subHeaderComponent = useMemo(() => {
     const handleClear = () => {
       setResetPaginationToggle(!resetPaginationToggle);
