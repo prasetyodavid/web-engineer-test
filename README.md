@@ -13,6 +13,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Next, unit testing with Jest:
+
 ```bash
 npm run test
 ```
@@ -22,6 +23,7 @@ npm run test
 I try to implement 2 types of general pagination methods : Client side pagination and server side pagination, based on my experience using [JQuery Datatables](https://datatables.net/) or [Ext JS](https://www.sencha.com/products/extjs/).
 
 ## Directory Structure
+
 I personally try to take a simple approach, keep things separated basically in a class model/view style. We will be using three primary folders similar to mvc architecture
 
 - component - The individual UI components that make up the app will live in here
@@ -58,11 +60,8 @@ To learn more about Frameworks & Libraries used in this project, take a look at 
 - [React Bootstrap](https://react-bootstrap.github.io) - The most popular front-end framework Rebuilt for React.
 - [Jest.io](https://jestjs.io/) - A delightful JavaScript Testing Framework with a focus on simplicity.
 
-
-
 ## Demo on Vercel
 
 [Demo App](https://david-ajaib-test.vercel.app/) avalilable on Vercel
 
 Happy Coding! 😋🖥️
-

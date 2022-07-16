@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import DataTable from 'react-data-table-component';
-
 import * as UsersApi from '../../lib/apis/users-api.js';
 import * as UsersModel from '../../lib/models/users-model.js';
 import FilterComponent from '../../component/filter/FilterComponent';
@@ -20,8 +19,7 @@ const UsersTableClientSide = () => {
     perPage: 10,
   });
 
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    React.useState(false);
+  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const columns = UsersModel.columns;
 
   const fetchUsers = async (page) => {

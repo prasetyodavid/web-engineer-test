@@ -4,6 +4,11 @@ import * as UsersApi from '../../lib/apis/users-api.js';
 import * as UsersModel from '../../lib/models/users-model.js';
 import FilterComponent from '../../component/filter/FilterComponent';
 
+/*
+  TODO:
+  Several server side filtering functions not yet working due to limitation of API
+*/
+
 const UsersTableServerSide = () => {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState({
@@ -19,8 +24,7 @@ const UsersTableServerSide = () => {
   const [reset, setReset] = useState(false);
   const [filterGender, setFilterGender] = useState('all');
   const columns = UsersModel.columns;
-  const [resetPaginationToggle, setResetPaginationToggle] =
-    React.useState(false);
+  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 
   const fetchUsers = async (page) => {
     console.log(page);
