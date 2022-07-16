@@ -43,6 +43,7 @@ const UsersTableServerSide = () => {
   };
 
   const searchUser = async () => {
+    alert("Server-Side Name Searching Not Yet Available.");
     setLoading(true);
     filter.keyword = filterText;
     const response = await UsersApi.get(filter);

@@ -79,12 +79,10 @@ const UsersTableClientSide = () => {
     setFilterGender('all');
     setReset(true);
     setFilteredItems(users);
-  };
-
-  const selectGender = async (e) => {
-    e.preventDefault();
-    const { value } = e.target;
-    setFilterGender(value);
+    //handle if no data after reset
+    if (users.length == 0 || typeof page !== "undefined") {
+      fetchUsers();
+    }
   };
 
   useEffect(() => {

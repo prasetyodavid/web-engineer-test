@@ -18,13 +18,13 @@ Next, unit testing with Jest:
 npm run test
 ```
 
-## Method and results
+## Method and Results
 
 I try to implement 2 types of general pagination methods : Client side pagination and server side pagination, based on my experience using [JQuery Datatables](https://datatables.net/) or [Ext JS](https://www.sencha.com/products/extjs/).
 
 ## Directory Structure
 
-I personally try to take a simple approach, keep things separated basically in a class model/view style. We will be using three primary folders similar to mvc architecture
+Based on Next.js Framework, I personally try to take a simple approach, keep things separated basically in a class model/view style. We will be using three primary folders similar to mvc architecture:
 
 - component - The individual UI components that make up the app will live in here
 - lib - Models & API logic will live in here.
@@ -63,5 +63,9 @@ To learn more about Frameworks & Libraries used in this project, take a look at 
 ## Demo on Vercel
 
 [Demo App](https://david-ajaib-test.vercel.app/) avalilable on Vercel
+
+## What's Next ?
+
+For a better web performance using Next.js we can refer to this [official recommendation](https://nextjs.org/docs/going-to-production).
 
 Happy Coding! 😋🖥️
